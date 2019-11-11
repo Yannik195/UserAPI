@@ -15,8 +15,12 @@ app.get("/", (req, res) => {
 
     app.listen(process.env.PORT || 3000);
 
+    const uristring =
+    process.env.MONGOLAB_URI ||
+    process.env.MONGOHQ_URL ||
+    "mongodb://localhost:27017/usersMobileAppDB"
 
-mongoose.connect("mongodb://localhost:27017/usersMobileAppDB", {
+mongoose.connect( uristring , {
     useUnifiedTopology: true,
     useNewUrlParser: true
 });
